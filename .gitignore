@@ -8,6 +8,9 @@ auto-save-list
 tramp
 .\#*
 
+bin/
+lib/
+include
 Videos/
 DotFiles/
 
@@ -57,6 +60,7 @@ x64/
 x86/
 build/
 bld/
+[Bb]in/
 [Oo]bj/
 
 # Visual Studio 2015 cache/options directory
@@ -101,6 +105,7 @@ artifacts/
 *.log
 *.vs/
 *.vs
+*bin/Debug/
 *obj/Debug/
 *.vspscc
 *.vssscc
