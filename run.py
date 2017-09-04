@@ -7,5 +7,11 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument(
     '-s', '--search', help="python3 run.py -s 'songOrArist'")
+
+
 args = parser.parse_args()
-query.main(args.search)
+
+if args.search is None:
+    print('No argument provided. Killing process.')
+else:
+    query.main(args.search)

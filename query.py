@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
-from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen, urlretrieve
 from pathlib import Path
+from bs4 import BeautifulSoup as bs
+
 
 url = 'http://mp3pn.info/search/s/f/'
 
 
 def main(query):
-    url = getSearchResults(query)
-    download(url)
+    _url = getSearchResults(query)
+    download(_url)
 
 
 def getSearchResults(query):
@@ -73,9 +74,10 @@ def download(url):
             print('DOWNLOADING')
             print()
             urlretrieve(url[0], destination + url[1])
-            print ("DOWNLOADED")
+            print("DOWNLOADED")
 
             print('\t--> {}'.format(destination + url[1]))
             found = True
         except FileNotFoundError:
-            print('Destination not found.\nDoes directory {} exist?'.format(destination))
+            print('''Destination not found.
+            \nDoes directory {} exist?'''.format(destination))
