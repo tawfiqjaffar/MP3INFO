@@ -15,5 +15,3 @@ if args.search is None:
     print('No argument provided. Killing process.')
 else:
     query.main(args.search)
-
-subprocess.call('deactivate')
