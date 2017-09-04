@@ -102,7 +102,6 @@ artifacts/
 *.log
 *.vs/
 *.vs
-*bin/Debug/
 *obj/Debug/
 *.vspscc
 *.vssscc
