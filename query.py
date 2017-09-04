@@ -23,7 +23,7 @@ def getSearchResults(query):
     songs = html.findAll("b", {"class": "cplayer-data-sound-title"})
     print(len(songs))
     print(len(artists))
-    for i in range(len(songs)):
+    for i, item in enumerate(songs):
         if i != 0 and i % 10 == 0:
             print('Show 10 more?(y/n)')
             response = input()

@@ -24,8 +24,9 @@ Run the following commands:
 
 ```sh
 $ cd && git clone https://github.com/tawfiqjaffar/MP3INFO.git && cd MP3INFO
-$ source bin/activate
-$ bash setup.sh
+$ python3 -m virtualenv ENV
+$ source ENV/bin/activate
+$ pip3 install -r requirements.txt
 ```
 
 Your Password may be asked during the installation process.
