@@ -5,19 +5,25 @@ from pathlib import Path
 from bs4 import BeautifulSoup as bs
 
 
-url = 'http://mp3pn.info/search/s/f/'
+URL = 'http://mp3pn.info/search/s/f/'
 
 
 def main(query):
-    _url = getSearchResults(query)
+    '''
+    Main phase (calls to functions in namespace)
+    '''
+    _url = get_search_results(query)
     download(_url)
 
 
-def getSearchResults(query):
-    query_to_url = url + query.replace(' ', '+') + '/'
+def get_search_results(query):
+    '''
+    Search results gathering phase
+    '''
+    query_to_url = URL + query.replace(' ', '+') + '/'
     query_opened = urlopen(query_to_url)
     html = bs(query_opened, "html.parser")
-    d = {}
+    _d = {}
 
     artists = html.findAll("i", {"class": "cplayer-data-sound-author"})
     songs = html.findAll("b", {"class": "cplayer-data-sound-title"})
@@ -30,24 +36,24 @@ def getSearchResults(query):
             if response == 'n':
                 break
 
-        a = str(artists[i])
-        a = a[37:][:-4]
+        _a = str(artists[i])
+        _a = _a[37:][:-4]
         id_url = str(artists[i].find_next())[15:]
         id_tag = ''
-        for c in id_url:
-            if c != '/':
-                id_tag += c
+        for character in id_url:
+            if character != '/':
+                id_tag += character
             else:
                 break
 
         result = html.findAll("li", {"data-sound-id": id_tag})
         print()
         download_url = result[0]['data-download-url']
-        print(str(i + 1) + ' - ' + a)
-        s = str(songs[i])
-        s = s[36:][:-4].replace('&amp;', '&')
-        d[str(i + 1)] = (download_url, "{} - {}.mp3".format(a, s))
-        print('\t{}'.format(s))
+        print(str(i + 1) + ' - ' + _a)
+        _s = str(songs[i])
+        _s = _s[36:][:-4].replace('&amp;', '&')
+        _d[str(i + 1)] = (download_url, "{} - {}.mp3".format(_a, _s))
+        print('\t{}'.format(_s))
         print()
 
     print('END.')
@@ -55,10 +61,13 @@ def getSearchResults(query):
     print('Item to download: ')
     item = input()
 
-    return d[item]
+    return _d[item]
 
 
 def download(url):
+    '''
+    Download phase
+    '''
     found = False
     while found is False:
         print()
