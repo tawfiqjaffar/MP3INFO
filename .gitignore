@@ -7,7 +7,7 @@
 auto-save-list
 tramp
 .\#*
-
+.vscode/
 bin/
 lib/
 include
