@@ -9,8 +9,7 @@ tramp
 .\#*
 .vscode/
 bin/
-lib/
-include
+
 Videos/
 DotFiles/
 
